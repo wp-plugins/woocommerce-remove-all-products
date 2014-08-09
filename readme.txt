@@ -4,7 +4,7 @@ Donate link: http://www.omniwp.com.br/donate/
 Tags: woocommerce, products, remove
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: trunk
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

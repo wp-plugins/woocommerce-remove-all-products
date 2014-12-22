@@ -3,7 +3,7 @@
 
 Plugin Name: WooCommerce Remove All Products
 Description: This plugin will remove all products from a WooCommerce store.
-Version: 1.0
+Version: 1.0.1
 Author: Gabriel Reguly
 Author URI: http://omniwp.com.br/
 
@@ -13,7 +13,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
 **/
 
-
 add_action( 'plugins_loaded', 'wc_remove_all_products_init' );
 
 function wc_remove_all_products_init() {
@@ -22,7 +21,6 @@ function wc_remove_all_products_init() {
 
 function wc_remove_all_products_admin_menu() {
 	if ( current_user_can( 'manage_woocommerce' ) ) {
-//			woocommerce_admin_css();
 		add_submenu_page('woocommerce',
 			 __('WooCommerce Remove All Products', 'wc_remove_all_products_omniwp'),  
 			 __('Remove All Products', 'wc_remove_all_products_omniwp') , 
@@ -95,10 +93,9 @@ function wc_remove_all_products_display_default_tab() {
 ?>
 <div id="wc_remove_all_products_options" class="panel woocommerce_options_panel">
   <?php
-
 	$args = array( 
 		'post_type'   => array( 'product', 'product_variation'),
-		'post_status' => 'publish',
+		'post_status' => get_post_stati(),
 		'numberposts' => -1, 
 		);
 	$products = get_posts( $args );
@@ -147,7 +144,6 @@ function wc_remove_all_products_display_default_tab() {
 </div>
 <?php 
 }
-
 
 function wc_remove_all_products_display_log_tab() {
 	$continue = false;
@@ -201,7 +197,6 @@ foreach ( wc_remove_all_products_get_log() as $event ) {
 <?php 
 
 }
-
 
 function wc_remove_all_products_nice_time( $time, $args = false ) {
 
@@ -265,5 +260,4 @@ function wc_remove_all_products_delete_log() {
 	array_push( $log, array( $time, __( 'Log cleared.', 'wc_remove_all_products_omniwp' ), $current_user_id ) );
 	update_option( 'wc_remove_all_products_omniwp_log', $log );
 }
-
 ?>

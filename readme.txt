@@ -41,6 +41,10 @@ If you want help with a customisation, hire a developer!
 
 == Changelog ==
 
+= 1.0.2 =
+* Added: ask for users to review the plugin at WordPress.org
+* Improvement: Updated text domains 
+
 = 1.0.1 =
 * Improvement: get products with any post status, kudos for Stevinoz (https://wordpress.org/support/profile/stevinoz) who warned me about 'drafts' not being removed 
 

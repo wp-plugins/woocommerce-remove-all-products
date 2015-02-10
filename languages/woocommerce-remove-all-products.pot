@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommmerce Gold Price extension\n"
+"Project-Id-Version: WooCommerce Remove All Products\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-10 08:33-0300\n"
 "PO-Revision-Date: 2015-02-10 08:34-0300\n"
@@ -97,26 +97,3 @@ msgstr ""
 #, php-format
 msgid "Please rate <strong>WooCommerce Remove All Products</strong> <a href=\"%1$s\" target=\"_blank\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> on <a href=\"%1$s\" target=\"_blank\">WordPress.org</a> to help us keep this plugin free."
 msgstr ""
-
-#~ msgid "Gold Price Values"
-#~ msgstr "Valores para preço do ouro"
-
-#~ msgid "Gold Price"
-#~ msgstr "Preço do ouro"
-
-#~ msgid "Gold priced products"
-#~ msgstr "Produtos com preços baseados no valor do ouro"
-
-#~ msgid "Product has zero weight, can't calculate price based on weight"
-#~ msgstr "Produto tem peso zero, não é possivel calcular o preço"
-
-#~ msgid "Product was on sale, can't calculate sale price"
-#~ msgstr ""
-#~ "Produto estava em promoção, não é possível calclular o preço de promoção"
-
-#~ msgid "Karats"
-#~ msgstr "Quilates"
-
-#, fuzzy
-#~ msgid "Price"
-#~ msgstr "Preço do ouro"

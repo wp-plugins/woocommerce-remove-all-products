@@ -3,7 +3,7 @@
 
 Plugin Name: WooCommerce Remove All Products
 Description: This plugin will remove all products from a WooCommerce store.
-Version: 1.0.2
+Version: 1.0.3
 Author: Gabriel Reguly
 Author URI: http://omniwp.com.br/
 Text Domain: woocommerce-remove-all-products
@@ -95,19 +95,21 @@ function wc_remove_all_products_display_default_tab() {
 	$removed        = 0;
 
 ?>
-<div id="wc_remove_all_products_options" class="panel woocommerce_options_panel">
+<div id="wc_remove_all_products_options" class="woocommerce_options_panel">
   <?php
-	$args = array( 
-		'post_type'   => array( 'product', 'product_variation'),
-		'post_status' => get_post_stati(),
-		'numberposts' => -1, 
-		);
-	$products = get_posts( $args );
-	if ( ! $products ) {
+  
+  	$products_count = 0;
+  	foreach ( wp_count_posts( 'product' ) as $product )
+		$products_count += $product;
+  	foreach ( wp_count_posts( 'product_variation' ) as $variation )
+		$products_count += $variation;
+  
+
+	if ( ! $products_count ) {
 		echo '<h3>' . __( 'No products found.', 'woocommerce-remove-all-products') . '</h3>';
 	} else {
-		echo '<h3>' . sprintf(__( 'Found %s products.', 'woocommerce-remove-all-products'), sizeof( $products ) ) . '</h3>';
-	
+		echo '<h3>' . sprintf(__( 'Found %s products.', 'woocommerce-remove-all-products'), $products_count ) . '</h3>';
+		
 		if (  empty( $_POST ) ) {
 ?>
 	  <form method="post">
@@ -116,6 +118,14 @@ function wc_remove_all_products_display_default_tab() {
 	  </form>
 <?php
 		} elseif ( check_admin_referer( 'delete_action', 'delete_security_nonce' ) ) {
+			
+			$args = array( 
+				'post_type'   => array( 'product', 'product_variation' ),
+				'post_status' => get_post_stati(),
+				'numberposts' => 250, 
+				);
+			$products = get_posts( $args );
+
 			$msg = sprintf(__( 'Removing %s products.', 'woocommerce-remove-all-products'), sizeof( $products ) );
 			printf( '<p>%s</p><ol>', $msg );
 			wc_remove_all_products_omniwp_log( $msg );
@@ -274,7 +284,7 @@ function wc_remove_all_products_admin_footer_text( $footer_text ) {
 	);
 
 	if ( isset( $current_screen->id ) && in_array( $current_screen->id, $pages ) ) {
-		$footer_text = sprintf( __( 'Please rate <strong>WooCommerce Remove All Products</strong> <a href="%1$s" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a> on <a href="%1$s" target="_blank">WordPress.org</a> to help us keep this plugin free.', 'woocommerce-remove-all-products' ), 'https://wordpress.org/support/view/plugin-reviews/woocommerce-remove-all-products?filter=5#postform' );
+		$footer_text = sprintf( __( 'Please rate <a href="%1$s" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a> for <strong>WooCommerce Remove All Products</strong> on <a href="%1$s" target="_blank">WordPress.org</a> and make the developer happy :-)', 'woocommerce-remove-all-products' ), 'https://wordpress.org/support/view/plugin-reviews/woocommerce-remove-all-products?filter=5#postform' );
 	}
 
 	return $footer_text;

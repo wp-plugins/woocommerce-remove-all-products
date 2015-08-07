@@ -41,6 +41,9 @@ If you want help with a customisation, hire a developer!
 
 == Changelog ==
 
+=  1.0.4 2015-08-07 =
+* Cosmetic: Changed wording from 'Removing 250 products' to 'Trying to remove 250 products'. Thanks Nick @https://github.com/greguly/WooCommerce-Remove-All-Products/issues/2
+
 = 1.0.3 =
 * Improvement: To fix memory/processing timeout errors now we get product count instead of getting the actual products
 
